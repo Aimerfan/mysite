@@ -4,17 +4,14 @@ from django.test.utils import setup_test_environment
 setup_test_environment()
 """
 
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.urls import reverse
 
 
 class ViewsTests(TestCase):
 
-    # create an instance of the client for our use
-    client = Client()
-
     def test_index_response_status_code(self):
-        response = ViewsTests.client.get('/')
+        response = self.client.get('/')
         # Not Found: /
         # we should expect a 404 from that address; if you instead see an
         # "Invalid HTTP_HOST header" error and a 400 response, you probably
@@ -24,7 +21,7 @@ class ViewsTests(TestCase):
     def test_polls_response_status_code(self):
         # on the other hand we should expect to find something at '/polls/'
         # we'll use 'reverse()' rather than a hardcoded URL
-        response = ViewsTests.client.get(reverse('polls:index'))
+        response = self.client.get(reverse('polls:index'))
         self.assertEqual(response.status_code, 200)
         # 200
 
