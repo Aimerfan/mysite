@@ -1,5 +1,11 @@
 language: python
 
+addons:
+  sonarcloud:
+    organization: "aimerfan"
+    token:
+      secure: $SC_TOKEN
+
 install:
   - pip install django
 
@@ -8,3 +14,4 @@ before_script:
 
 script:
   - python manage.py test
+  - sonar-scanner -Dsonar.login=$SC_TOKEN
