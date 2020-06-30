@@ -3,3 +3,4 @@ __pycache__/
 django/
 *activate.bat
 *.sqlite3
+*coverage*

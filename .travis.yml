@@ -8,10 +8,12 @@ addons:
 
 install:
   - pip install django
+  - pip install coverage
 
 before_script:
   - python manage.py migrate
 
 script:
-  - python manage.py test
+  - coverage run --source='.' manage.py test
+  - coverage xml
   - sonar-scanner -Dsonar.login=$SC_TOKEN
