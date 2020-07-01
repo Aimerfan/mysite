@@ -2,6 +2,7 @@
 
 ## Requirement package
 1. `django`
+2. `coverage`
 
 ## Useful command
 1. `python manage.py runserver` to run test server at localhost.
